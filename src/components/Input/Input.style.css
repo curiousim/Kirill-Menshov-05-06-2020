@@ -1,4 +1,5 @@
 .search-container {
+  margin: 25px 0;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -15,7 +16,7 @@
   padding: 10px 15px 10px 40px;
   color: #c5c5c5;
   transition: 0.2s;
-  border-radius: 10px;
+  border-radius: 5px;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
@@ -26,8 +27,8 @@ input:focus {
 }
 
 .suggestions {
-  width: 50%;
   min-width: 300px;
+  border-radius: 5px;
   display: flex;
   background: white;
   flex-direction: column;
@@ -37,13 +38,16 @@ input:focus {
   overflow: auto;
   position: absolute;
   z-index: 60;
-  top: 77px; 
+  top: 110px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
 .suggestion {
+  color: #c5c5c5;
+  min-width: 300px;
   padding: 5px;
 }
 
 .suggestion:hover {
-
+  color: #191919;
 }
