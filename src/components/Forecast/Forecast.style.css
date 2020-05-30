@@ -1,0 +1,10 @@
+.forecast-container {
+  width: 100%;
+  border: 1px solid #191919;
+  border-radius: 5px;
+}
+
+.cards {
+  display: flex;
+  justify-content: space-around;
+}
