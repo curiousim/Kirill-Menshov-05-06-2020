@@ -1,0 +1,18 @@
+.hbar-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.hbar-logo {
+  padding: 10px;
+}
+
+.hbar-controls {
+  display: flex;
+  padding: 10px;
+}
+
+.hbar-temp {
+ margin-right: 5px;
+}
