@@ -28,7 +28,9 @@ export function Input() {
   );
 
   function handleInput(event: React.ChangeEvent<HTMLInputElement>) {
-    setSearch(event.target.value);
+    const filteredValue = event.target.value.replace(/[^A-Za-z]/gi, '');
+
+    setSearch(filteredValue);
   }
 
   function handleSelectSuggest() {
@@ -57,6 +59,7 @@ export function Input() {
         onChange={handleInput}
         onFocus={toggleSuggestion}
         onBlur={toggleSuggestion}
+        pattern="[A-Za-z]"
       />
       <div className="suggestions">
         {showSuggest &&

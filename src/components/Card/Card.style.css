@@ -1,10 +1,13 @@
 .card-container {
+  width: 150px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
+  align-items: center;
 }
 
 .card-row {
+  width: 100%;
   display: flex;
   justify-content: space-between;
 }

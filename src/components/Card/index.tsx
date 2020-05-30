@@ -24,14 +24,14 @@ export function Card({ forecast }: Props) {
 
   return (
     <div className="card-container">
-      {date.toDateString()}
+      {date.toLocaleDateString(undefined, { weekday: 'long' })}
       <div className="card-row">
         <img
           alt={forecast.Day.IconPhrase}
           width="50px"
           src={require(`../../assets/${forecast.Day.Icon}.svg`)}
         />
-        <p>{tempDay}</p>
+        <p>{tempDay}&deg;</p>
       </div>
       <div className="card-row">
         <img
@@ -39,7 +39,7 @@ export function Card({ forecast }: Props) {
           width="50px"
           src={require(`../../assets/${forecast.Night.Icon}.svg`)}
         />
-        <p>{tempNight}</p>
+        <p>{tempNight}&deg;</p>
       </div>
     </div>
   );
