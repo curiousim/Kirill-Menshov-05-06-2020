@@ -16,3 +16,12 @@
 .hbar-temp {
  margin-right: 5px;
 }
+
+.temp {
+  cursor: pointer;
+  color: #c5c5c5;
+}
+
+.temp-selected {
+  color: #191919;
+}
