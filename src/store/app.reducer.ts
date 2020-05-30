@@ -1,5 +1,7 @@
 import { RootState } from './store';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { fiveDaysRsp } from '../utils/responses';
+import { Forecast } from '../models/forecast';
 
 export const slice = createSlice({
   name: 'app',
@@ -8,7 +10,7 @@ export const slice = createSlice({
     isLoading: false,
     favorites: [],
     currentShow: 'home',
-    forecast: [],
+    forecast: fiveDaysRsp,
     city: '',
     cityCode: '',
   },
@@ -25,11 +27,13 @@ export const slice = createSlice({
   },
 });
 
-export const getShowInFahrenheit = (state: RootState) => state.app.fahrenheit;
+export const getShowInFahrenheit = (state: RootState): boolean =>
+  state.app.fahrenheit;
 
-export const getCurrentShow = (state: RootState) => state.app.currentShow;
+export const getCurrentShow = (state: RootState): string =>
+  state.app.currentShow;
 
-export const getFavorites = (state: RootState) => state.app.favorites;
+export const getFavorites = (state: RootState): string[] => state.app.favorites;
 
 export const getForecast = (state: RootState) => state.app.forecast;
 

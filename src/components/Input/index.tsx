@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Input.style.css';
 import { useDebounce } from '../../hooks/useDebounce';
-import { acompleteRsp } from '../../data/responses';
+import { acompleteRsp } from '../../utils/responses';
 import { Suggestion } from '../../models/autocomplete';
 
 export function Input() {
