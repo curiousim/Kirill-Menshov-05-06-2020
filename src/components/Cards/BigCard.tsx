@@ -1,5 +1,5 @@
 import React from 'react';
-import './Forecast.style.css';
+import './Card.style.css';
 import { useSelector } from 'react-redux';
 import { getShowInFahrenheit } from '../../store/app.reducer';
 import { cToFahr } from '../../utils';
@@ -9,14 +9,16 @@ interface Props {
   iconPhrase: string;
   iconId: number;
   temp: number;
+  city: string;
+  isLoading?: boolean;
 }
 
-export function ForecastHeader({ iconPhrase, iconId, temp }: Props) {
+export function BigCard({ iconPhrase, iconId, temp, city, isLoading }: Props) {
   const showFahrenheit = useSelector(getShowInFahrenheit);
 
   const renderCity = () => (
     <div className="city">
-      Tel Aviv, IL <AddFavorite />
+      {city} <AddFavorite />
     </div>
   );
 
@@ -32,9 +34,9 @@ export function ForecastHeader({ iconPhrase, iconId, temp }: Props) {
     </div>
   );
   return (
-    <div className="forecast-header">
+    <div className="big-card">
       {renderCity()}
-      {renderCurrentWeather()}
+      {!isLoading && renderCurrentWeather()}
     </div>
   );
 }

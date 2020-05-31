@@ -1,4 +1,5 @@
 import { Forecast } from '../models/forecast';
+import { FavoriteForecast } from '../models/favForecast';
 
 export const acompleteRsp = [
   {
@@ -282,15 +283,11 @@ export const fiveDaysRsp: Forecast[] = [
   },
 ];
 
-export const oneDayRsp = [
+export const oneDayRsp: FavoriteForecast[] = [
   {
     LocalObservationDateTime: '2020-05-30T11:26:00+03:00',
-    EpochTime: 1590827160,
     WeatherText: 'Mostly sunny',
     WeatherIcon: 2,
-    HasPrecipitation: false,
-    PrecipitationType: null,
-    IsDayTime: true,
     Temperature: {
       Metric: {
         Value: 23.7,
@@ -303,9 +300,5 @@ export const oneDayRsp = [
         UnitType: 18,
       },
     },
-    MobileLink:
-      'http://m.accuweather.com/en/il/tel-aviv/215854/current-weather/215854?lang=en-us',
-    Link:
-      'http://www.accuweather.com/en/il/tel-aviv/215854/current-weather/215854?lang=en-us',
   },
 ];

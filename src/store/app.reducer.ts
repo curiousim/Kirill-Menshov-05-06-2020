@@ -10,8 +10,8 @@ const INITIAL_STATE: AppState = {
   favorites: [],
   currentShow: 'home',
   forecast: fiveDaysRsp,
-  city: '',
-  cityId: null,
+  city: 'Tel',
+  cityId: 666,
 };
 
 export const slice = createSlice({
@@ -35,6 +35,11 @@ export const slice = createSlice({
 
       state.favorites = [...state.favorites, newFavorite];
     },
+    removeFavorite: (state) => {
+      state.favorites = [
+        ...state.favorites.filter((fav) => fav.id !== state.cityId),
+      ];
+    },
   },
 });
 
@@ -49,6 +54,12 @@ export const getForecast = (state: State) => state.app.forecast;
 
 export const getCityId = (state: State) => state.app.cityId;
 
-export const { setAppIsLoading, setFahrenheit, setShow } = slice.actions;
+export const {
+  setAppIsLoading,
+  setFahrenheit,
+  setShow,
+  addToFavorite,
+  removeFavorite,
+} = slice.actions;
 
 export default slice.reducer;

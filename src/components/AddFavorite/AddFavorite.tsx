@@ -1,16 +1,27 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { getFavorites, getCityId } from '../../store/app.reducer';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  getFavorites,
+  getCityId,
+  addToFavorite,
+  removeFavorite,
+} from '../../store/app.reducer';
 
 export function AddFavorite() {
+  const dispatch = useDispatch();
+
   const favoritesArr = useSelector(getFavorites);
 
   const cityId = useSelector(getCityId);
 
   function isAddedToFavs() {
-    const isInArr = favoritesArr.find((city) => city.id === cityId);
+    const isInArr = favoritesArr.filter((city) => city.id === cityId);
 
-    return isInArr;
+    return isInArr.length > 0;
+  }
+
+  function handleClick() {
+    isAddedToFavs() ? dispatch(removeFavorite()) : dispatch(addToFavorite());
   }
 
   return (
@@ -21,6 +32,7 @@ export function AddFavorite() {
       fill="none"
       viewBox="0 0 24 24"
       style={{ cursor: 'pointer' }}
+      onClick={handleClick}
     >
       <path
         fill={isAddedToFavs() ? 'red' : '#c5c5c5'}
