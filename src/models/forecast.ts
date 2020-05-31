@@ -7,7 +7,7 @@ export interface Forecast {
       UnitType: number;
     };
     Maximum: {
-      Value: 24.4;
+      Value: number;
       Unit: string;
       UnitType: number;
     };

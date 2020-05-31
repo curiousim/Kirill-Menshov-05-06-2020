@@ -1,3 +1,5 @@
+import { Forecast } from '../models/forecast';
+
 export const acompleteRsp = [
   {
     Version: 1,
@@ -151,10 +153,9 @@ export const acompleteRsp = [
   },
 ];
 
-export const fiveDaysRsp = [
+export const fiveDaysRsp: Forecast[] = [
   {
     Date: '2020-05-30T07:00:00+03:00',
-    EpochDate: 1590811200,
     Temperature: {
       Minimum: {
         Value: 16.9,
@@ -177,15 +178,9 @@ export const fiveDaysRsp = [
       IconPhrase: 'Mostly clear',
       HasPrecipitation: false,
     },
-    Sources: ['AccuWeather'],
-    MobileLink:
-      'http://m.accuweather.com/en/il/tel-aviv/215854/daily-weather-forecast/215854?day=1&unit=c&lang=en-us',
-    Link:
-      'http://www.accuweather.com/en/il/tel-aviv/215854/daily-weather-forecast/215854?day=1&unit=c&lang=en-us',
   },
   {
     Date: '2020-05-31T07:00:00+03:00',
-    EpochDate: 1590897600,
     Temperature: {
       Minimum: {
         Value: 16.9,
@@ -208,15 +203,9 @@ export const fiveDaysRsp = [
       IconPhrase: 'Mostly clear',
       HasPrecipitation: false,
     },
-    Sources: ['AccuWeather'],
-    MobileLink:
-      'http://m.accuweather.com/en/il/tel-aviv/215854/daily-weather-forecast/215854?day=2&unit=c&lang=en-us',
-    Link:
-      'http://www.accuweather.com/en/il/tel-aviv/215854/daily-weather-forecast/215854?day=2&unit=c&lang=en-us',
   },
   {
     Date: '2020-06-01T07:00:00+03:00',
-    EpochDate: 1590984000,
     Temperature: {
       Minimum: {
         Value: 21,
@@ -239,15 +228,10 @@ export const fiveDaysRsp = [
       IconPhrase: 'Clear',
       HasPrecipitation: false,
     },
-    Sources: ['AccuWeather'],
-    MobileLink:
-      'http://m.accuweather.com/en/il/tel-aviv/215854/daily-weather-forecast/215854?day=3&unit=c&lang=en-us',
-    Link:
-      'http://www.accuweather.com/en/il/tel-aviv/215854/daily-weather-forecast/215854?day=3&unit=c&lang=en-us',
   },
   {
     Date: '2020-06-02T07:00:00+03:00',
-    EpochDate: 1591070400,
+
     Temperature: {
       Minimum: {
         Value: 20,
@@ -270,15 +254,9 @@ export const fiveDaysRsp = [
       IconPhrase: 'Partly cloudy',
       HasPrecipitation: false,
     },
-    Sources: ['AccuWeather'],
-    MobileLink:
-      'http://m.accuweather.com/en/il/tel-aviv/215854/daily-weather-forecast/215854?day=4&unit=c&lang=en-us',
-    Link:
-      'http://www.accuweather.com/en/il/tel-aviv/215854/daily-weather-forecast/215854?day=4&unit=c&lang=en-us',
   },
   {
     Date: '2020-06-03T07:00:00+03:00',
-    EpochDate: 1591156800,
     Temperature: {
       Minimum: {
         Value: 19.1,
@@ -301,11 +279,6 @@ export const fiveDaysRsp = [
       IconPhrase: 'Clear',
       HasPrecipitation: false,
     },
-    Sources: ['AccuWeather'],
-    MobileLink:
-      'http://m.accuweather.com/en/il/tel-aviv/215854/daily-weather-forecast/215854?day=5&unit=c&lang=en-us',
-    Link:
-      'http://www.accuweather.com/en/il/tel-aviv/215854/daily-weather-forecast/215854?day=5&unit=c&lang=en-us',
   },
 ];
 

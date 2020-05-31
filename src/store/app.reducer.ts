@@ -1,19 +1,22 @@
 import { RootState } from './store';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { fiveDaysRsp } from '../utils/responses';
-import { Forecast } from '../models/forecast';
+import { Favorite } from '../models/favorite';
+import { State, AppState } from '../models/rootsState';
+
+const INITIAL_STATE: AppState = {
+  fahrenheit: false,
+  isLoading: false,
+  favorites: [],
+  currentShow: 'home',
+  forecast: fiveDaysRsp,
+  city: '',
+  cityId: null,
+};
 
 export const slice = createSlice({
   name: 'app',
-  initialState: {
-    fahrenheit: false,
-    isLoading: false,
-    favorites: [],
-    currentShow: 'home',
-    forecast: fiveDaysRsp,
-    city: '',
-    cityCode: '',
-  },
+  initialState: INITIAL_STATE,
   reducers: {
     setAppIsLoading: (state, action: PayloadAction<boolean>) => {
       state.isLoading = action.payload;
@@ -24,18 +27,27 @@ export const slice = createSlice({
     setShow: (state, action: PayloadAction<'home' | 'favorites'>) => {
       state.currentShow = action.payload;
     },
+    addToFavorite: (state) => {
+      const newFavorite: Favorite = {
+        city: state.city,
+        id: state.cityId as number,
+      };
+
+      state.favorites = [...state.favorites, newFavorite];
+    },
   },
 });
 
-export const getShowInFahrenheit = (state: RootState): boolean =>
+export const getShowInFahrenheit = (state: State): boolean =>
   state.app.fahrenheit;
 
-export const getCurrentShow = (state: RootState): string =>
-  state.app.currentShow;
+export const getCurrentShow = (state: State): string => state.app.currentShow;
 
-export const getFavorites = (state: RootState): string[] => state.app.favorites;
+export const getFavorites = (state: State): Favorite[] => state.app.favorites;
 
-export const getForecast = (state: RootState) => state.app.forecast;
+export const getForecast = (state: State) => state.app.forecast;
+
+export const getCityId = (state: State) => state.app.cityId;
 
 export const { setAppIsLoading, setFahrenheit, setShow } = slice.actions;
 
