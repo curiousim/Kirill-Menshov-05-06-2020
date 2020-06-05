@@ -1,5 +1,5 @@
 import React from 'react';
-import './HeadBar.style.css';
+import './HeadBar.style.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { getShowInFahrenheit, setFahrenheit } from '../../store/app.reducer';
 
@@ -8,25 +8,14 @@ export function TempSwitch() {
 
   const showInFahrenheit = useSelector(getShowInFahrenheit);
 
-  const setShowInFahrenheit = () => dispatch(setFahrenheit(true));
-
-  const setShowInCelsius = () => dispatch(setFahrenheit(false));
+  const toggleFahrenheit = () =>
+    showInFahrenheit
+      ? dispatch(setFahrenheit(false))
+      : dispatch(setFahrenheit(true));
 
   return (
-    <div className="hbar-temp">
-      <span
-        className={showInFahrenheit ? 'temp' : 'temp-selected'}
-        onClick={setShowInCelsius}
-      >
-        C&deg;
-      </span>
-      /
-      <span
-        className={showInFahrenheit ? 'temp-selected' : 'temp'}
-        onClick={setShowInFahrenheit}
-      >
-        F&deg;
-      </span>
-    </div>
+    <button className="hbar-temp" onClick={toggleFahrenheit}>
+      {showInFahrenheit ? <span>F&deg;</span> : <span>C&deg;</span>}
+    </button>
   );
 }

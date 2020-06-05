@@ -1,0 +1,49 @@
+.App {
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--colorBlue);
+}
+
+
+// RESET DEFAULT
+
+:root {
+  color: var(--colorBlue100);
+  font-family: var(--fontFamily);
+  font-size: 62.5%;
+  overflow: auto;
+
+}
+
+html {
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+}
+
+* {
+  appearance: none;
+  border: 0;
+  outline: none;
+
+  &:active {
+    outline: none;
+    text-decoration: none;
+  }
+
+  &:focus {
+    outline: none;
+    text-decoration: none;
+  }
+}
+
+// VARS
+:root {
+  --fontFamily: Be Vietnam, Helvetica Neue, Arial, sans-serif;
+  --colorMilk: rgba(245, 245, 245, 1);
+  --colorWhite: rgba(255, 255, 255, 1);
+  --colorBlue: rgba(87, 185, 215, 1);
+}

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import './Input.style.css';
+import './Input.style.scss';
 import { useDebounce } from '../../hooks/useDebounce';
 import { acompleteRsp } from '../../utils/responses';
 import { Suggestion } from '../../models/autocomplete';
+import { SearchIcon } from '../../assets/search';
 
 export function Input() {
   const [search, setSearch] = useState('');
@@ -51,8 +52,8 @@ export function Input() {
 
   return (
     <div className="search-container">
+      <SearchIcon />
       <input
-        className="search-input"
         type="text"
         value={search}
         placeholder="Enter city"

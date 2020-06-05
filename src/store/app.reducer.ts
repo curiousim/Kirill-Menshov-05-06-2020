@@ -1,4 +1,3 @@
-import { RootState } from './store';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { fiveDaysRsp } from '../utils/responses';
 import { Favorite } from '../models/favorite';
@@ -7,7 +6,7 @@ import { State, AppState } from '../models/rootsState';
 const INITIAL_STATE: AppState = {
   fahrenheit: false,
   isLoading: false,
-  favorites: [],
+  favorites: [{ city: 'Tel Aviv', id: 215854 }],
   currentShow: 'home',
   forecast: fiveDaysRsp,
   city: 'Tel',

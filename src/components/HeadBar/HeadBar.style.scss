@@ -1,0 +1,52 @@
+.hbar-container {
+  width: calc(100% - 10rem);
+  display: flex;
+  align-items: center;
+  padding: 0 5rem;
+}
+
+.hbar-logo {
+  padding: 1rem;
+  width: 5rem;
+  margin-right: 2rem;
+}
+
+.hbar-controls {
+  margin-left: auto;
+  display: flex;
+  padding: 1rem;
+  color: #fff;
+}
+
+.hbar-temp {
+ margin-right: 5px;
+ cursor: pointer;
+ color: rgb(212, 212, 212);
+ border: none;
+ margin: 0;
+ padding: 0;
+ width: auto;
+ overflow: visible;
+ outline: none;
+ background: transparent;
+ font-size: 1.6rem;
+
+ :hover {
+   color: #fff;
+ }
+}
+
+.screen {
+  color: #fff;
+  margin: 0 5px;
+  font-size: 1.6rem;
+  background: transparent;
+}
+
+.selected-screen {
+  color: #fff;
+  margin: 0 5px;
+  font-size: 1.6rem;
+  border-bottom: solid 1px #fff;
+  background: transparent;
+}

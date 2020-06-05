@@ -1,5 +1,5 @@
 import React from 'react';
-import './Card.style.css';
+import './Card.style.scss';
 import { Forecast } from '../../models/forecast';
 import { useSelector } from 'react-redux';
 import { getShowInFahrenheit } from '../../store/app.reducer';

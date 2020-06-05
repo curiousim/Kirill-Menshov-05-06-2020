@@ -1,5 +1,5 @@
 import React from 'react';
-import './HeadBar.style.css';
+import './HeadBar.style.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { setShow, getCurrentShow } from '../../store/app.reducer';
 
@@ -13,22 +13,24 @@ export function WindowSwitch() {
   const setShowFavorites = () => dispatch(setShow('favorites'));
 
   return (
-    <div className="hbar-temp">
-      <span
-        className={currentShowComponent === 'home' ? 'temp-selected' : 'temp'}
+    <div className="hbar-controls">
+      <button
+        className={
+          currentShowComponent === 'home' ? 'selected-screen' : 'screen'
+        }
         onClick={setShowHome}
       >
         Home
-      </span>
-      /
-      <span
+      </button>
+      |
+      <button
         className={
-          currentShowComponent === 'favorites' ? 'temp-selected' : 'temp'
+          currentShowComponent === 'favorites' ? 'selected-screen' : 'screen'
         }
         onClick={setShowFavorites}
       >
         Favorites
-      </span>
+      </button>
     </div>
   );
 }
