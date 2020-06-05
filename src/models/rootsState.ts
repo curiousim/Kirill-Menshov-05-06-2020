@@ -1,5 +1,5 @@
 import { Favorite } from './favorite';
-import { Forecast } from './forecast';
+import { ForecastModel } from './forecast';
 
 export interface State {
   app: AppState;
@@ -10,7 +10,7 @@ export interface AppState {
   isLoading: boolean;
   favorites: Favorite[];
   currentShow: 'home' | 'favorites';
-  forecast: Forecast[];
+  forecast: ForecastModel[];
   city: string;
   cityId: number | null;
 }

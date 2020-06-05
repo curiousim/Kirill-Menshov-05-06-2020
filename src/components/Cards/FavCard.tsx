@@ -36,8 +36,6 @@ export function FavCard({ favorite }: Props) {
   const renderCard = () => (
     <BigCard
       city={favorite.city}
-      iconId={(forecast as FavoriteForecast).WeatherIcon}
-      iconPhrase={(forecast as FavoriteForecast).WeatherText}
       temp={(forecast as FavoriteForecast).Temperature.Metric.Value}
     />
   );

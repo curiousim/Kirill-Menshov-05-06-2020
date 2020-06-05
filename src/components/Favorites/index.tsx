@@ -1,5 +1,5 @@
 import React from 'react';
-import './Favorites.style.css';
+import './Favorites.style.scss';
 
 import { useSelector } from 'react-redux';
 import { getFavorites } from '../../store/app.reducer';

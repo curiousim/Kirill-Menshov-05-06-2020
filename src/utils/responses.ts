@@ -1,4 +1,4 @@
-import { Forecast } from '../models/forecast';
+import { ForecastModel } from '../models/forecast';
 import { FavoriteForecast } from '../models/favForecast';
 
 export const acompleteRsp = [
@@ -154,7 +154,7 @@ export const acompleteRsp = [
   },
 ];
 
-export const fiveDaysRsp: Forecast[] = [
+export const fiveDaysRsp: ForecastModel[] = [
   {
     Date: '2020-05-30T07:00:00+03:00',
     Temperature: {

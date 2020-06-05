@@ -1,12 +1,12 @@
 import React from 'react';
 import './Card.style.scss';
-import { Forecast } from '../../models/forecast';
+import { ForecastModel } from '../../models/forecast';
 import { useSelector } from 'react-redux';
 import { getShowInFahrenheit } from '../../store/app.reducer';
 import { cToFahr } from '../../utils';
 
 interface Props {
-  forecast: Forecast;
+  forecast: ForecastModel;
 }
 
 export function Card({ forecast }: Props) {

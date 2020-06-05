@@ -4,7 +4,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   padding: 5px;
 }
 
@@ -15,13 +14,30 @@
 }
 
 .big-card {
+  border-radius: 1rem;
   width: 300px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  margin: auto;
-  margin-bottom: 25px;
+  background: var(--colorYellow);
+  color: var(--colorWhite);
+}
+
+.bigcard-temp {
+  font-size: 8.4rem;
+  font-weight: 700;
+  padding: 3rem;
+}
+
+.bigcard-city {
+  font-size: 5.4rem;
+  font-weight: 700;
+  padding: 3rem 0;
+}
+
+.card-fav {
+  width: 100%;
+  text-align: end;
 }
 
 .current {

@@ -1,4 +1,4 @@
-export interface Forecast {
+export interface ForecastModel {
   Date: string;
   Temperature: {
     Minimum: {

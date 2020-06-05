@@ -7,36 +7,21 @@ import { AddFavorite } from '../AddFavorite/AddFavorite';
 
 interface Props {
   city: string;
-  iconPhrase?: string;
-  iconId?: number;
-  temp?: number;
+  temp: number;
 }
 
-export function BigCard({ iconPhrase, iconId, temp, city }: Props) {
+export function BigCard({ temp, city }: Props) {
   const showFahrenheit = useSelector(getShowInFahrenheit);
-
-  const renderCity = () => (
-    <div className="city">
-      {city} <AddFavorite />
-    </div>
-  );
-
-  const renderCurrentWeather = () => (
-    <div className="current">
-      <h1>{showFahrenheit && temp ? cToFahr(temp) : temp}&deg;</h1>
-      <img
-        alt={iconPhrase}
-        width="100px"
-        src={require(`../../assets/${iconId}.svg`)}
-      />
-      <h4>{iconPhrase}</h4>
-    </div>
-  );
 
   return (
     <div className="big-card">
-      {renderCity()}
-      {renderCurrentWeather()}
+      <div className="card-fav">
+        <AddFavorite />
+      </div>
+      <span className="bigcard-temp">
+        {showFahrenheit && temp ? cToFahr(temp) : temp}&deg;
+      </span>
+      <span className="bigcard-city">{city}</span>
     </div>
   );
 }
