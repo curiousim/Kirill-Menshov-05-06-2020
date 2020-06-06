@@ -33,7 +33,7 @@ export function Input() {
   useEffect(() => {
     if (debouncedSearch) {
       axios({
-        url: `http://dataservice.accuweather.com/locations/v1/cities/autocomplete`,
+        url: `https://dataservice.accuweather.com/locations/v1/cities/autocomplete`,
         method: 'get',
         params: {
           apikey: process.env.REACT_APP_ACCU_KEY,
