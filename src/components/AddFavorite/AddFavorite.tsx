@@ -8,7 +8,7 @@ import {
 } from '../../store/app.reducer';
 
 interface Props {
-  customId?: number;
+  customId?: string;
 }
 
 export function AddFavorite({ customId }: Props) {
@@ -33,7 +33,7 @@ export function AddFavorite({ customId }: Props) {
   }
 
   return (
-    <div style={{ padding: '1rem' }}>
+    <button onClick={handleClick} style={{ padding: '1rem' }}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
@@ -41,7 +41,6 @@ export function AddFavorite({ customId }: Props) {
         fill="none"
         viewBox="0 0 24 24"
         style={{ cursor: 'pointer' }}
-        onClick={handleClick}
       >
         <path
           fill={isAddedToFavs() ? 'var(--colorRed)' : 'var(--colorWhite)'}
@@ -50,6 +49,6 @@ export function AddFavorite({ customId }: Props) {
           clipRule="evenodd"
         ></path>
       </svg>
-    </div>
+    </button>
   );
 }

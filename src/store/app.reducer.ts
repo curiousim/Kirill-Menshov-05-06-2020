@@ -2,18 +2,13 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { fiveDaysRsp } from '../utils/responses';
 import { Favorite } from '../models/favorite';
 import { State, AppState } from '../models/rootsState';
+import { ForecastModel } from '../models/forecast';
 
 const INITIAL_STATE: AppState = {
   fahrenheit: false,
   isLoading: false,
-  favorites: [
-    { city: 'Tel Aviv', id: '215854' },
-    { city: 'Tel Aviv', id: '215854' },
-    { city: 'Tel Aviv', id: '215854' },
-    { city: 'Tel Aviv', id: '215854' },
-    { city: 'Tel Aviv', id: '215854' },
-  ],
-  currentShow: 'favorites',
+  favorites: [],
+  currentShow: 'home',
   forecast: fiveDaysRsp,
   city: 'Tel Aviv',
   cityId: '215854',
@@ -28,6 +23,9 @@ export const slice = createSlice({
     },
     setFahrenheit: (state, action: PayloadAction<boolean>) => {
       state.fahrenheit = action.payload;
+    },
+    setForecast: (state, action: PayloadAction<ForecastModel[]>) => {
+      state.forecast = action.payload;
     },
     setShow: (state, action: PayloadAction<'home' | 'favorites'>) => {
       state.currentShow = action.payload;
@@ -65,6 +63,10 @@ export const getForecast = (state: State) => state.app.forecast;
 
 export const getCityId = (state: State) => state.app.cityId;
 
+export const getCityName = (state: State) => state.app.city;
+
+export const getIsLoading = (state: State) => state.app.isLoading;
+
 export const {
   setAppIsLoading,
   setFahrenheit,
@@ -73,6 +75,7 @@ export const {
   removeFavorite,
   setCity,
   setCityId,
+  setForecast,
 } = slice.actions;
 
 export default slice.reducer;

@@ -15,7 +15,7 @@ export function TempSwitch() {
 
   return (
     <button className="hbar-temp" onClick={toggleFahrenheit}>
-      {showInFahrenheit ? <span>F&deg;</span> : <span>C&deg;</span>}
+      {showInFahrenheit ? <span>C&deg;</span> : <span>F&deg;</span>}
     </button>
   );
 }

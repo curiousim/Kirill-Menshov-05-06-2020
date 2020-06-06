@@ -46,6 +46,16 @@ body {
   }
 }
 
+button {
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  overflow: visible;
+  outline: none;
+  background: transparent;
+}
+
 // VARS
 :root {
   --fontFamily: SF Pro Text, Be Vietnam, Helvetica Neue, Arial, sans-serif;

@@ -1,5 +1,6 @@
 .hbar-container {
   width: calc(100% - 10rem);
+  max-width: 100rem;
   display: flex;
   align-items: center;
   padding: 0 5rem;
@@ -34,13 +35,6 @@
  margin-right: 5px;
  cursor: pointer;
  color: rgb(212, 212, 212);
- border: none;
- margin: 0;
- padding: 0;
- width: auto;
- overflow: visible;
- outline: none;
- background: transparent;
  font-size: 1.6rem;
 
  :hover {

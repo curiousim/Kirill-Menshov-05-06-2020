@@ -33,7 +33,7 @@ export function Input() {
         url: `http://dataservice.accuweather.com/locations/v1/cities/autocomplete`,
         method: 'get',
         params: {
-          apikey: '1EU24RLGj7iLDBCueRlAb5l26LOwusoH',
+          apikey: process.env.REACT_APP_ACCU_KEY,
           language: 'en-us',
           q: debouncedSearch,
         },
@@ -74,7 +74,7 @@ export function Input() {
   }
 
   return (
-    <div className="search-container">
+    <div className="search-container" ref={input}>
       <SearchIcon />
       <input
         type="text"
@@ -82,7 +82,6 @@ export function Input() {
         placeholder="Enter city"
         onChange={handleInput}
         onFocus={showSuggestion}
-        ref={input}
         pattern="[A-Za-z]"
       />
       <div className="suggestions">
