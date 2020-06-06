@@ -38,7 +38,7 @@ export function Home() {
   useEffect(() => {
     dispatch(setAppIsLoading(true));
     axios({
-      url: `http://dataservice.accuweather.com/forecasts/v1/daily/5day/${cityId}`,
+      url: `https://dataservice.accuweather.com/forecasts/v1/daily/5day/${cityId}`,
       method: 'get',
       params: {
         apikey: process.env.REACT_APP_ACCU_KEY,

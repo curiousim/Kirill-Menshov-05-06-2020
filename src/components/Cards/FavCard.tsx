@@ -26,7 +26,7 @@ export function FavCard({ favorite }: Props) {
   useEffect(() => {
     setIsLoading(true);
     axios({
-      url: `http://dataservice.accuweather.com/currentconditions/v1/${favorite.id}`,
+      url: `https://dataservice.accuweather.com/currentconditions/v1/${favorite.id}`,
       method: 'get',
       params: {
         apikey: process.env.REACT_APP_ACCU_KEY,
