@@ -16,6 +16,7 @@ import axios, { AxiosResponse } from 'axios';
 import { Loading } from '../Loading';
 import { Placeholder } from '../Placeholder';
 import { useToasts } from 'react-toast-notifications';
+import { useGeolocation } from '../../hooks/useGeolocation';
 
 export function Home() {
   const dispatch = useDispatch();
@@ -32,13 +33,15 @@ export function Home() {
 
   const { addToast } = useToasts();
 
+  useGeolocation();
+
   useEffect(() => {
     dispatch(setAppIsLoading(true));
     axios({
       url: `http://dataservice.accuweather.com/forecasts/v1/daily/5day/${cityId}`,
       method: 'get',
       params: {
-        // apikey: process.env.REACT_APP_ACCU_KEY,
+        apikey: process.env.REACT_APP_ACCU_KEY,
         language: 'en-us',
         details: false,
         metric: true,
@@ -55,6 +58,7 @@ export function Home() {
           autoDismiss: true,
         });
       });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cityId]);
 
   function renderComponent() {

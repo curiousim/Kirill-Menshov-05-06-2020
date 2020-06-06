@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { fiveDaysRsp } from '../utils/responses';
 import { Favorite } from '../models/favorite';
 import { State, AppState } from '../models/rootsState';
 import { ForecastModel } from '../models/forecast';
@@ -7,11 +6,11 @@ import { ForecastModel } from '../models/forecast';
 const INITIAL_STATE: AppState = {
   fahrenheit: false,
   isLoading: false,
-  favorites: [],
   currentShow: 'home',
-  forecast: [],
   city: 'Tel Aviv',
   cityId: '215854',
+  favorites: [],
+  forecast: [],
 };
 
 export const slice = createSlice({

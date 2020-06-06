@@ -2,13 +2,7 @@ import React from 'react';
 
 export function Logo() {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width=""
-      height=""
-      fill="none"
-      viewBox="0 0 100 100"
-    >
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 100 100">
       <circle cx="50" cy="50" r="48.5" stroke="#fff" strokeWidth="3"></circle>
       <path
         fill="#fff"

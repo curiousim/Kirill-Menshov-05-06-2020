@@ -58,10 +58,11 @@ export function Input() {
     } else {
       setSuggestions([]);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debouncedSearch]);
 
   function handleInput(event: React.ChangeEvent<HTMLInputElement>) {
-    const filteredValue = event.target.value.replace(/[^A-Za-z]/gi, '');
+    const filteredValue = event.target.value.replace(/[^A-Za-z\s]/gi, '');
 
     setSearch(filteredValue);
   }

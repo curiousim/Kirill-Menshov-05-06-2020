@@ -10,7 +10,9 @@ export function FavoritesComponent() {
   const favorites = useSelector(getFavorites) as Favorite[];
 
   function renderFavorites() {
-    return favorites.map((fav: Favorite) => <FavCard favorite={fav} />);
+    return favorites.map((fav: Favorite) => (
+      <FavCard key={fav.id} favorite={fav} />
+    ));
   }
 
   return <div className="favorites-container">{renderFavorites()}</div>;

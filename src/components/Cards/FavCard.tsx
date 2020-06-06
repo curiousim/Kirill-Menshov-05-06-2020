@@ -29,12 +29,11 @@ export function FavCard({ favorite }: Props) {
       url: `http://dataservice.accuweather.com/currentconditions/v1/${favorite.id}`,
       method: 'get',
       params: {
-        // apikey: process.env.REACT_APP_ACCU_KEY,
+        apikey: process.env.REACT_APP_ACCU_KEY,
         language: 'en-us',
       },
     })
       .then((res) => {
-        console.log(res);
         setForecast(res.data[0]);
         setIsLoading(false);
       })
@@ -51,6 +50,7 @@ export function FavCard({ favorite }: Props) {
     return () => {
       setForecast({});
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function renderCard() {
