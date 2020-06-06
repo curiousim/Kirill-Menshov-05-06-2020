@@ -12,5 +12,5 @@ export interface AppState {
   currentShow: 'home' | 'favorites';
   forecast: ForecastModel[];
   city: string;
-  cityId: number | null;
+  cityId: string;
 }

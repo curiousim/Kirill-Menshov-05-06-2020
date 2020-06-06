@@ -7,16 +7,16 @@ const INITIAL_STATE: AppState = {
   fahrenheit: false,
   isLoading: false,
   favorites: [
-    { city: 'Tel Aviv', id: 215854 },
-    { city: 'Tel Aviv', id: 215854 },
-    { city: 'Tel Aviv', id: 215854 },
-    { city: 'Tel Aviv', id: 215854 },
-    { city: 'Tel Aviv', id: 215854 },
+    { city: 'Tel Aviv', id: '215854' },
+    { city: 'Tel Aviv', id: '215854' },
+    { city: 'Tel Aviv', id: '215854' },
+    { city: 'Tel Aviv', id: '215854' },
+    { city: 'Tel Aviv', id: '215854' },
   ],
   currentShow: 'favorites',
   forecast: fiveDaysRsp,
-  city: 'Tel',
-  cityId: 666,
+  city: 'Tel Aviv',
+  cityId: '215854',
 };
 
 export const slice = createSlice({
@@ -35,15 +35,21 @@ export const slice = createSlice({
     addToFavorite: (state) => {
       const newFavorite: Favorite = {
         city: state.city,
-        id: state.cityId as number,
+        id: state.cityId as string,
       };
 
       state.favorites = [...state.favorites, newFavorite];
     },
-    removeFavorite: (state, action: PayloadAction<number>) => {
+    removeFavorite: (state, action: PayloadAction<string>) => {
       state.favorites = [
         ...state.favorites.filter((fav) => fav.id !== action.payload),
       ];
+    },
+    setCity: (state, action: PayloadAction<string>) => {
+      state.city = action.payload;
+    },
+    setCityId: (state, action: PayloadAction<string>) => {
+      state.cityId = action.payload;
     },
   },
 });
@@ -65,6 +71,8 @@ export const {
   setShow,
   addToFavorite,
   removeFavorite,
+  setCity,
+  setCityId,
 } = slice.actions;
 
 export default slice.reducer;

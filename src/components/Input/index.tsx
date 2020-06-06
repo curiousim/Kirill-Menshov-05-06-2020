@@ -1,32 +1,50 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './Input.style.scss';
 import { useDebounce } from '../../hooks/useDebounce';
-import { acompleteRsp } from '../../utils/responses';
 import { Suggestion } from '../../models/autocomplete';
 import { SearchIcon } from '../../assets/search';
+import axios, { AxiosResponse } from 'axios';
+import { useDispatch } from 'react-redux';
+import { setCity, setCityId } from '../../store/app.reducer';
+import useClickOutside from '../../hooks/useClickOutside';
 
 export function Input() {
+  const dispatch = useDispatch();
+
+  const input = useRef(null);
+
   const [search, setSearch] = useState('');
 
   const [suggestions, setSuggestions] = useState<Suggestion[]>([]);
 
   const [showSuggest, setShowSuggest] = useState(false);
 
-  const toggleSuggestion = () => setShowSuggest(!showSuggest);
+  const showSuggestion = () => setShowSuggest(true);
+
+  const hideSuggestion = () => setShowSuggest(false);
 
   const debouncedSearch = useDebounce(search, 500);
 
-  useEffect(
-    () => {
-      if (debouncedSearch) {
-        setSuggestions(acompleteRsp);
-      } else {
-        setSuggestions([]);
-      }
-    },
+  useClickOutside(input, hideSuggestion);
 
-    [debouncedSearch] // Only call effect if debounced search term changes
-  );
+  useEffect(() => {
+    if (debouncedSearch) {
+      axios({
+        url: `http://dataservice.accuweather.com/locations/v1/cities/autocomplete`,
+        method: 'get',
+        params: {
+          apikey: '1EU24RLGj7iLDBCueRlAb5l26LOwusoH',
+          language: 'en-us',
+          q: debouncedSearch,
+        },
+      }).then((res: AxiosResponse) => {
+        console.log(res.data);
+        setSuggestions(res.data as Suggestion[]);
+      });
+    } else {
+      setSuggestions([]);
+    }
+  }, [debouncedSearch]);
 
   function handleInput(event: React.ChangeEvent<HTMLInputElement>) {
     const filteredValue = event.target.value.replace(/[^A-Za-z]/gi, '');
@@ -34,8 +52,13 @@ export function Input() {
     setSearch(filteredValue);
   }
 
-  function handleSelectSuggest() {
-    console.log('Selected');
+  function handleSelectSuggest(city: string, cityId: string) {
+    return function click() {
+      dispatch(setCity(city));
+      dispatch(setCityId(cityId));
+      setSearch('');
+      hideSuggestion();
+    };
   }
 
   function renderSuggestion(suggestion: Suggestion) {
@@ -43,7 +66,7 @@ export function Input() {
       <div
         className="suggestion"
         key={suggestion.LocalizedName}
-        onClick={handleSelectSuggest}
+        onClick={handleSelectSuggest(suggestion.LocalizedName, suggestion.Key)}
       >
         {suggestion.LocalizedName}
       </div>
@@ -58,8 +81,8 @@ export function Input() {
         value={search}
         placeholder="Enter city"
         onChange={handleInput}
-        onFocus={toggleSuggestion}
-        onBlur={toggleSuggestion}
+        onFocus={showSuggestion}
+        ref={input}
         pattern="[A-Za-z]"
       />
       <div className="suggestions">

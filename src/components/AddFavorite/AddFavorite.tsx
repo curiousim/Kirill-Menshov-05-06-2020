@@ -28,7 +28,7 @@ export function AddFavorite({ customId }: Props) {
 
   function handleClick() {
     isAddedToFavs()
-      ? dispatch(removeFavorite(cityId as number))
+      ? dispatch(removeFavorite(cityId as string))
       : dispatch(addToFavorite());
   }
 
