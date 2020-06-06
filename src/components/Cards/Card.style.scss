@@ -1,4 +1,5 @@
 // * FORECAST CARD
+
 .card-container {
   width: 150px;
   display: flex;
@@ -49,7 +50,44 @@
   padding: 3rem 0;
 }
 
-.card-fav {
+.card-add-fav {
   width: 100%;
   text-align: end;
 }
+
+// * FAVORITE CARD
+
+.fav-card {
+  border-radius: 1rem;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--colorWhite);
+  color: var(--colorBlack);
+}
+
+
+.fav-temp {
+  font-size: 6rem;
+  font-weight: 700;
+  padding: 2rem;
+}
+
+.fav-city {
+  font-size: 2rem;
+  font-weight: 500;
+  padding: 1rem 0;
+}
+
+.fav-text {
+  width: calc(100% - 2rem);
+  background: var(--colorYellow);
+  font-size: 2rem;
+  font-weight: 500;
+  color: var(--colorWhite);
+  padding: 1rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+

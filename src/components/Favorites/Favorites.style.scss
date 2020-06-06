@@ -1,9 +1,11 @@
 .favorites-container {
   border-radius: 5px;
   padding: 10px;
-}
-
-.cards {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+
+  > div {
+    margin: 2rem 2rem;
+  }
 }

@@ -13,5 +13,5 @@ export function FavoritesComponent() {
     return favorites.map((fav: Favorite) => <FavCard favorite={fav} />);
   }
 
-  return <div className="forecast-container">{renderFavorites()}</div>;
+  return <div className="favorites-container">{renderFavorites()}</div>;
 }

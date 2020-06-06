@@ -6,8 +6,14 @@ import { State, AppState } from '../models/rootsState';
 const INITIAL_STATE: AppState = {
   fahrenheit: false,
   isLoading: false,
-  favorites: [{ city: 'Tel Aviv', id: 215854 }],
-  currentShow: 'home',
+  favorites: [
+    { city: 'Tel Aviv', id: 215854 },
+    { city: 'Tel Aviv', id: 215854 },
+    { city: 'Tel Aviv', id: 215854 },
+    { city: 'Tel Aviv', id: 215854 },
+    { city: 'Tel Aviv', id: 215854 },
+  ],
+  currentShow: 'favorites',
   forecast: fiveDaysRsp,
   city: 'Tel',
   cityId: 666,
@@ -34,9 +40,9 @@ export const slice = createSlice({
 
       state.favorites = [...state.favorites, newFavorite];
     },
-    removeFavorite: (state) => {
+    removeFavorite: (state, action: PayloadAction<number>) => {
       state.favorites = [
-        ...state.favorites.filter((fav) => fav.id !== state.cityId),
+        ...state.favorites.filter((fav) => fav.id !== action.payload),
       ];
     },
   },

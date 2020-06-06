@@ -15,7 +15,7 @@ export function BigCard({ temp, city }: Props) {
 
   return (
     <div className="big-card">
-      <div className="card-fav">
+      <div className="card-add-fav">
         <AddFavorite />
       </div>
       <span className="bigcard-temp">

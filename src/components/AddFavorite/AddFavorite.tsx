@@ -7,12 +7,18 @@ import {
   removeFavorite,
 } from '../../store/app.reducer';
 
-export function AddFavorite() {
+interface Props {
+  customId?: number;
+}
+
+export function AddFavorite({ customId }: Props) {
   const dispatch = useDispatch();
 
   const favoritesArr = useSelector(getFavorites);
 
-  const cityId = useSelector(getCityId);
+  const currentCityId = useSelector(getCityId);
+
+  const cityId = customId ? customId : currentCityId;
 
   function isAddedToFavs() {
     const isInArr = favoritesArr.filter((city) => city.id === cityId);
@@ -21,7 +27,9 @@ export function AddFavorite() {
   }
 
   function handleClick() {
-    isAddedToFavs() ? dispatch(removeFavorite()) : dispatch(addToFavorite());
+    isAddedToFavs()
+      ? dispatch(removeFavorite(cityId as number))
+      : dispatch(addToFavorite());
   }
 
   return (

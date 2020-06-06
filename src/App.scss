@@ -4,6 +4,10 @@
   height: 100%;
   min-height: 100vh;
   background-color: var(--colorBlue);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 
@@ -46,9 +50,10 @@ body {
 :root {
   --fontFamily: SF Pro Text, Be Vietnam, Helvetica Neue, Arial, sans-serif;
   --colorMilk: rgba(245, 245, 245, 1);
-  --colorWhite: rgba(255, 255, 255, 1);
+  --colorWhite: rgba(254, 254, 254, 1);
   --colorWhite30: rgba(255, 255, 255, .3);
   --colorBlue: rgba(87, 185, 215, 1);
   --colorYellow: rgba(242, 197, 104, 1);
   --colorRed: rgba(224, 17, 95, 1);
+  --colorBlack: rgb(1, 1, 1);
 }
