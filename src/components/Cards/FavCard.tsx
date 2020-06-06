@@ -8,6 +8,7 @@ import { cToFahr } from '../../utils';
 import { AddFavorite } from '../AddFavorite/AddFavorite';
 import { Loading } from '../Loading';
 import { Placeholder } from '../Placeholder';
+import { useToasts } from 'react-toast-notifications';
 
 interface Props {
   favorite: Favorite;
@@ -20,13 +21,15 @@ export function FavCard({ favorite }: Props) {
 
   const showFahrenheit = useSelector(getShowInFahrenheit);
 
+  const { addToast } = useToasts();
+
   useEffect(() => {
     setIsLoading(true);
     axios({
       url: `http://dataservice.accuweather.com/currentconditions/v1/${favorite.id}`,
       method: 'get',
       params: {
-        apikey: process.env.REACT_APP_ACCU_KEY,
+        // apikey: process.env.REACT_APP_ACCU_KEY,
         language: 'en-us',
       },
     })
@@ -37,6 +40,13 @@ export function FavCard({ favorite }: Props) {
       })
       .catch((error) => {
         setIsLoading(false);
+        addToast(
+          `Error while fetching forecast for ${favorite.city}: ${error.message}`,
+          {
+            appearance: 'warning',
+            autoDismiss: true,
+          }
+        );
       });
     return () => {
       setForecast({});
@@ -72,6 +82,7 @@ export function FavCard({ favorite }: Props) {
         <Placeholder
           width="19rem"
           height="27rem"
+          color="var(--colorBlack)"
           content="No data. Please try again."
         />
       )}

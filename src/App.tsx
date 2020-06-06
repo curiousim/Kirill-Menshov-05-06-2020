@@ -5,15 +5,18 @@ import { useSelector } from 'react-redux';
 import { getCurrentShow } from './store/app.reducer';
 import { FavoritesComponent } from './components/Favorites';
 import { Home } from './components/Home';
+import { ToastProvider } from 'react-toast-notifications';
 
 function App() {
   const showComponent = useSelector(getCurrentShow);
 
   return (
-    <div className="App">
-      <HeadBar />
-      {showComponent === 'favorites' ? <FavoritesComponent /> : <Home />}
-    </div>
+    <ToastProvider>
+      <div className="App">
+        <HeadBar />
+        {showComponent === 'favorites' ? <FavoritesComponent /> : <Home />}
+      </div>
+    </ToastProvider>
   );
 }
 

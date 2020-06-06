@@ -7,6 +7,7 @@ import axios, { AxiosResponse } from 'axios';
 import { useDispatch } from 'react-redux';
 import { setCity, setCityId } from '../../store/app.reducer';
 import useClickOutside from '../../hooks/useClickOutside';
+import { useToasts } from 'react-toast-notifications';
 
 export function Input() {
   const dispatch = useDispatch();
@@ -25,6 +26,8 @@ export function Input() {
 
   const debouncedSearch = useDebounce(search, 500);
 
+  const { addToast } = useToasts();
+
   useClickOutside(input, hideSuggestion);
 
   useEffect(() => {
@@ -37,10 +40,21 @@ export function Input() {
           language: 'en-us',
           q: debouncedSearch,
         },
-      }).then((res: AxiosResponse) => {
-        console.log(res.data);
-        setSuggestions(res.data as Suggestion[]);
-      });
+      })
+        .then((res: AxiosResponse) => {
+          if (!res.data.length)
+            addToast(`No such city found`, {
+              appearance: 'warning',
+              autoDismiss: true,
+            });
+          setSuggestions(res.data as Suggestion[]);
+        })
+        .catch((error) => {
+          addToast(`Error while fetching suggestions: ${error.message}`, {
+            appearance: 'warning',
+            autoDismiss: true,
+          });
+        });
     } else {
       setSuggestions([]);
     }

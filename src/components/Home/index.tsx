@@ -14,6 +14,8 @@ import { BigCard } from '../Cards';
 import { Forecast } from '../Forecast';
 import axios, { AxiosResponse } from 'axios';
 import { Loading } from '../Loading';
+import { Placeholder } from '../Placeholder';
+import { useToasts } from 'react-toast-notifications';
 
 export function Home() {
   const dispatch = useDispatch();
@@ -27,6 +29,8 @@ export function Home() {
   const cityId = useSelector(getCityId);
 
   const cityName = useSelector(getCityName);
+
+  const { addToast } = useToasts();
 
   useEffect(() => {
     dispatch(setAppIsLoading(true));
@@ -46,6 +50,10 @@ export function Home() {
       })
       .catch((error) => {
         dispatch(setAppIsLoading(false));
+        addToast(`Error while fetching forecast: ${error.message}`, {
+          appearance: 'warning',
+          autoDismiss: true,
+        });
       });
   }, [cityId]);
 
@@ -72,7 +80,18 @@ export function Home() {
 
   return (
     <div className="home-container">
-      {isLoading ? <Loading width="50rem" height="50rem" /> : renderComponent()}
+      {isLoading ? (
+        <Loading width="50rem" height="50rem" />
+      ) : forecast.length ? (
+        renderComponent()
+      ) : (
+        <Placeholder
+          width="50rem"
+          height="50rem"
+          color="var(--colorWhite)"
+          content="No forecast to show. Please enter a city."
+        />
+      )}
     </div>
   );
 }

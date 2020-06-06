@@ -9,7 +9,7 @@ const INITIAL_STATE: AppState = {
   isLoading: false,
   favorites: [],
   currentShow: 'home',
-  forecast: fiveDaysRsp,
+  forecast: [],
   city: 'Tel Aviv',
   cityId: '215854',
 };
