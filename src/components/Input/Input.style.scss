@@ -40,21 +40,9 @@
   }
 }
 
-// .search-input {
-//   width: 300px;
-//   border: none;
-//   background-color: transparent;
-//   font-size: 1.3rem;
-//   padding: 10px 15px 10px 40px;
-//   color: #fff;
-//   transition: 0.2s;
-//   border-bottom: solid 1px #fff;  
-// }
-
-
 .suggestions {
-  min-width: 300px;
-  border-radius: 5px;
+  min-width: 30rem;
+  border-radius: .5rem;
   display: flex;
   background: white;
   flex-direction: column;
@@ -64,13 +52,19 @@
   overflow: auto;
   position: absolute;
   z-index: 60;
-  top: 110px;
+  top: 8rem;
+
+  @media (max-width: 400px) {
+    top: 15rem;
+    right: 3rem;
+  }
 }
 
 .suggestion {
   color: #c5c5c5;
   min-width: 300px;
   padding: 5px;
+  font-size: 1.6rem;
 }
 
 .suggestion:hover {

@@ -11,9 +11,9 @@ export function HeadBar() {
       <div className="hbar-logo">
         <Logo />
       </div>
-      <div>
-        <Input />
-      </div>
+
+      <Input />
+
       <div className="hbar-controls">
         <WindowSwitch />
         <TempSwitch />

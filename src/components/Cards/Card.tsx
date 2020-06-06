@@ -24,22 +24,24 @@ export function Card({ forecast }: Props) {
 
   return (
     <div className="card-container">
-      {date.toLocaleDateString(undefined, { weekday: 'long' })}
+      <span className="card-date">
+        {date.toLocaleDateString(undefined, { weekday: 'long' })}
+      </span>
       <div className="card-row">
         <img
           alt={forecast.Day.IconPhrase}
-          width="50px"
+          width="70px"
           src={require(`../../assets/${forecast.Day.Icon}.svg`)}
         />
-        <p>{tempDay}&deg;</p>
+        <span className={'card-temp'}>{tempDay}&deg;</span>
       </div>
       <div className="card-row">
         <img
           alt={forecast.Night.IconPhrase}
-          width="50px"
+          width="70px"
           src={require(`../../assets/${forecast.Night.Icon}.svg`)}
         />
-        <p>{tempNight}&deg;</p>
+        <span className={'card-temp'}>{tempNight}&deg;</span>
       </div>
     </div>
   );

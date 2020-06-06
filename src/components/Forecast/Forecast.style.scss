@@ -1,7 +1,29 @@
 .forecast-container {
-  width: 100%;
-  border-radius: 5px;
-  padding: 10px;
+  margin-top: 5rem;
+}
+
+.forecast {
+  background-color: var(--colorWhite);
+  border-radius: 1rem;
+  padding: 3rem 1rem;
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
+
+  > :not(:last-child) {
+    border-right: solid .1rem black;
+  }
+
+  @media (max-width: 823px) {
+    width: 30rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 3rem;
+
+    > :not(:last-child) {
+      border-right: none;
+      border-bottom: solid .1rem black;
+    }
+  }
 }

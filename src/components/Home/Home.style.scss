@@ -6,14 +6,20 @@
 }
 
 .current {
-  width: 100rem;
+  width: 100%;
+  max-width: 100rem;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .icon-container {
   background: var(--colorWhite30);
   border-radius: 1rem;
+
+  @media (max-width: 619px) {
+    margin-top: 2rem;
+  }
 }

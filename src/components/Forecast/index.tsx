@@ -11,9 +11,11 @@ interface Props {
 export function Forecast({ forecast }: Props) {
   return (
     <div className="forecast-container">
-      {forecast.map((day: ForecastModel) => (
-        <Card key={day.Date} forecast={day} />
-      ))}
+      <div className="forecast">
+        {forecast.map((day: ForecastModel) => (
+          <Card key={day.Date} forecast={day} />
+        ))}
+      </div>
     </div>
   );
 }
