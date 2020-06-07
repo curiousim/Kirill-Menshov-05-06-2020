@@ -26,7 +26,7 @@ export function FavCard({ favorite }: Props) {
   useEffect(() => {
     setIsLoading(true);
     axios({
-      url: `https://https://wearolo.herokuapp.com/api/currentconditions/v1/${favorite.id}`,
+      url: `https://wearolo.herokuapp.com/api/currentconditions/v1/${favorite.id}`,
       method: 'get',
       params: {
         apikey: process.env.REACT_APP_ACCU_KEY,

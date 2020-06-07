@@ -33,7 +33,7 @@ export function Input() {
   useEffect(() => {
     if (debouncedSearch) {
       axios({
-        url: `https://https://wearolo.herokuapp.com/api/locations/v1/cities/autocomplete`,
+        url: `https://wearolo.herokuapp.com/api/locations/v1/cities/autocomplete`,
         method: 'get',
         params: {
           apikey: process.env.REACT_APP_ACCU_KEY,

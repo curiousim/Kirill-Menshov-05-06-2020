@@ -42,7 +42,7 @@ export const useGeolocation = () => {
     if (Object.keys(position).length)
       axios({
         url:
-          'https://https://wearolo.herokuapp.com/api/locations/v1/cities/geoposition/search',
+          'https://wearolo.herokuapp.com/api/locations/v1/cities/geoposition/search',
         method: 'get',
         params: {
           apikey: process.env.REACT_APP_ACCU_KEY,
