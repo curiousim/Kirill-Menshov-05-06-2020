@@ -14,9 +14,12 @@
 }
 
 .hbar-logo {
-
   width: 5rem;
   margin-right: 2rem;
+  
+  @media (max-width: 685px) {
+    margin-right: 0;
+  }
 }
 
 .hbar-controls {

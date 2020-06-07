@@ -92,7 +92,7 @@ export function Home() {
         renderComponent()
       ) : (
         <Placeholder
-          width="50rem"
+          width="100%"
           height="50rem"
           color="var(--colorWhite)"
           content="No forecast to show. Please enter a city."

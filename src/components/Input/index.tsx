@@ -11,7 +11,7 @@ import {
   getCurrentShow,
   setShow,
 } from '../../store/app.reducer';
-import useClickOutside from '../../hooks/useClickOutside';
+import { useClickOutside } from '../../hooks/useClickOutside';
 import { useToasts } from 'react-toast-notifications';
 
 export function Input() {

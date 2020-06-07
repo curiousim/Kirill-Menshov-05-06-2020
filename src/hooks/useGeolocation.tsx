@@ -49,7 +49,9 @@ export const useGeolocation = () => {
 
   useEffect(() => {
     if (Object.keys(position).length && !wasGeolocated) {
+      dispatch(setWasGeolocated());
       dispatch(setAppIsLoading(true));
+
       axios({
         url:
           'https://wearolo.herokuapp.com/api/locations/v1/cities/geoposition/search',
@@ -74,7 +76,6 @@ export const useGeolocation = () => {
           );
           dispatch(setCity(res.data.LocalizedName));
           dispatch(setCityId(res.data.Key));
-          dispatch(setWasGeolocated());
           dispatch(setAppIsLoading(false));
         })
         .catch((error) => {
@@ -86,7 +87,7 @@ export const useGeolocation = () => {
         });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [position]);
 
   return { ...position };
 };
