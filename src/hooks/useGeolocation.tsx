@@ -1,7 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useToasts } from 'react-toast-notifications';
-import { useDispatch } from 'react-redux';
-import { setAppIsLoading, setCity, setCityId } from '../store/app.reducer';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  setAppIsLoading,
+  setCity,
+  setCityId,
+  getWasGeolocated,
+  setWasGeolocated,
+} from '../store/app.reducer';
 import axios, { AxiosResponse } from 'axios';
 
 interface PositionState {
@@ -11,6 +17,8 @@ interface PositionState {
 
 export const useGeolocation = () => {
   const dispatch = useDispatch();
+
+  const wasGeolocated = useSelector(getWasGeolocated);
 
   const [position, setPosition] = useState<PositionState | {}>({});
 
@@ -31,15 +39,17 @@ export const useGeolocation = () => {
   };
 
   useEffect(() => {
-    const geo = navigator.geolocation;
+    if (!wasGeolocated) {
+      const geo = navigator.geolocation;
 
-    geo.getCurrentPosition(onChange, onError);
+      geo.getCurrentPosition(onChange, onError);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
-    dispatch(setAppIsLoading(true));
-    if (Object.keys(position).length)
+    if (Object.keys(position).length && !wasGeolocated) {
+      dispatch(setAppIsLoading(true));
       axios({
         url:
           'https://wearolo.herokuapp.com/api/locations/v1/cities/geoposition/search',
@@ -64,6 +74,7 @@ export const useGeolocation = () => {
           );
           dispatch(setCity(res.data.LocalizedName));
           dispatch(setCityId(res.data.Key));
+          dispatch(setWasGeolocated());
           dispatch(setAppIsLoading(false));
         })
         .catch((error) => {
@@ -73,8 +84,9 @@ export const useGeolocation = () => {
             autoDismiss: true,
           });
         });
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [position]);
+  }, []);
 
   return { ...position };
 };

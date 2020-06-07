@@ -8,6 +8,7 @@ export interface State {
 export interface AppState {
   fahrenheit: boolean;
   isLoading: boolean;
+  wasGeolocated: boolean;
   favorites: Favorite[];
   currentShow: 'home' | 'favorites';
   forecast: ForecastModel[];

@@ -6,6 +6,7 @@ import { ForecastModel } from '../models/forecast';
 const INITIAL_STATE: AppState = {
   fahrenheit: false,
   isLoading: false,
+  wasGeolocated: false,
   currentShow: 'home',
   city: 'Tel Aviv',
   cityId: '215854',
@@ -48,6 +49,9 @@ export const slice = createSlice({
     setCityId: (state, action: PayloadAction<string>) => {
       state.cityId = action.payload;
     },
+    setWasGeolocated: (state) => {
+      state.wasGeolocated = true;
+    },
   },
 });
 
@@ -66,6 +70,8 @@ export const getCityName = (state: State) => state.app.city;
 
 export const getIsLoading = (state: State) => state.app.isLoading;
 
+export const getWasGeolocated = (state: State) => state.app.wasGeolocated;
+
 export const {
   setAppIsLoading,
   setFahrenheit,
@@ -75,6 +81,7 @@ export const {
   setCity,
   setCityId,
   setForecast,
+  setWasGeolocated,
 } = slice.actions;
 
 export default slice.reducer;
