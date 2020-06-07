@@ -38,7 +38,7 @@ export function Home() {
   useEffect(() => {
     dispatch(setAppIsLoading(true));
     axios({
-      url: `https://dataservice.accuweather.com/forecasts/v1/daily/5day/${cityId}`,
+      url: `https://https://wearolo.herokuapp.com/api/forecasts/v1/daily/5day/${cityId}`,
       method: 'get',
       params: {
         apikey: process.env.REACT_APP_ACCU_KEY,
