@@ -56,7 +56,7 @@ export const useGeolocation = () => {
       })
         .then((res: AxiosResponse) => {
           addToast(
-            `According to geolocationa you are in ${res.data.LocalizedName}. Showing weather for your location`,
+            `According to geolocation you are in ${res.data.LocalizedName}. Showing weather for your location`,
             {
               appearance: 'success',
               autoDismiss: true,

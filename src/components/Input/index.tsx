@@ -4,8 +4,13 @@ import { useDebounce } from '../../hooks/useDebounce';
 import { Suggestion } from '../../models/autocomplete';
 import { SearchIcon } from '../../assets/search';
 import axios, { AxiosResponse } from 'axios';
-import { useDispatch } from 'react-redux';
-import { setCity, setCityId } from '../../store/app.reducer';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  setCity,
+  setCityId,
+  getCurrentShow,
+  setShow,
+} from '../../store/app.reducer';
 import useClickOutside from '../../hooks/useClickOutside';
 import { useToasts } from 'react-toast-notifications';
 
@@ -19,6 +24,10 @@ export function Input() {
   const [suggestions, setSuggestions] = useState<Suggestion[]>([]);
 
   const [showSuggest, setShowSuggest] = useState(false);
+
+  const currentShowComponent = useSelector(getCurrentShow);
+
+  const setShowHome = () => dispatch(setShow('home'));
 
   const showSuggestion = () => setShowSuggest(true);
 
@@ -73,6 +82,8 @@ export function Input() {
       dispatch(setCityId(cityId));
       setSearch('');
       hideSuggestion();
+
+      if (currentShowComponent !== 'home') setShowHome();
     };
   }
 

@@ -36,28 +36,30 @@ export function Home() {
   useGeolocation();
 
   useEffect(() => {
-    dispatch(setAppIsLoading(true));
-    axios({
-      url: `https://wearolo.herokuapp.com/api/forecasts/v1/daily/5day/${cityId}`,
-      method: 'get',
-      params: {
-        apikey: process.env.REACT_APP_ACCU_KEY,
-        language: 'en-us',
-        details: false,
-        metric: true,
-      },
-    })
-      .then((res: AxiosResponse) => {
-        dispatch(setForecast(res.data.DailyForecasts));
-        dispatch(setAppIsLoading(false));
+    if (!isLoading) {
+      dispatch(setAppIsLoading(true));
+      axios({
+        url: `https://wearolo.herokuapp.com/api/forecasts/v1/daily/5day/${cityId}`,
+        method: 'get',
+        params: {
+          apikey: process.env.REACT_APP_ACCU_KEY,
+          language: 'en-us',
+          details: false,
+          metric: true,
+        },
       })
-      .catch((error) => {
-        dispatch(setAppIsLoading(false));
-        addToast(`Error while fetching forecast: ${error.message}`, {
-          appearance: 'warning',
-          autoDismiss: true,
+        .then((res: AxiosResponse) => {
+          dispatch(setForecast(res.data.DailyForecasts));
+          dispatch(setAppIsLoading(false));
+        })
+        .catch((error) => {
+          dispatch(setAppIsLoading(false));
+          addToast(`Error while fetching forecast: ${error.message}`, {
+            appearance: 'warning',
+            autoDismiss: true,
+          });
         });
-      });
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cityId]);
 
